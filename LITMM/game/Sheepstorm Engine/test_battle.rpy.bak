@@ -1,0 +1,73 @@
+label act_7_first_battle:
+    call init_skills
+    call init_fighters
+    $ player = [you]
+    $ friends = []
+    $ allies = player + friends
+    $ enemies = [paper_soldier, paper_grunt, paper_soldier_2, paper_grunt_2, paper_grunt_3]
+    $ you.sprite_pos = [0.2, 0.5] #0.25
+    #$ customer1.registerSkill(OuchAttack)
+    $ paper_soldier.sprite_pos = [0.6, 0.40]
+    $ paper_grunt.sprite_pos = [0.6, 0.60]
+    $ paper_soldier_2.sprite_pos = [0.8, 0.25]
+    $ paper_grunt_2.sprite_pos = [0.8, 0.50]
+    $ paper_grunt_3.sprite_pos = [0.8, 0.75]
+    $ you.registerSkill(AOEattack)
+    $ allchars = allies + enemies
+    $ orderInitiators = orderBattle(allchars)
+    $ victorBattle = executeBattle(allies, enemies, orderInitiators)
+    if victorBattle<> 3:
+        stop music fadeout 1.0
+        $ config.allow_skipping = True
+        if victorBattle == 1:
+            #play sound "victory.ogg"
+            #pause 6
+            #"Gained nothing"
+            #scene bg black with dissolve
+            #pause 1
+            return
+        elif victorBattle == 2:
+            b "HOW DID YOU LOSE???"
+            play audio glitch_2
+            show white
+            pause 0.2
+            hide white
+            play audio glitch_3
+            show white
+            pause 0.2
+            $ renpy.quit(relaunch=False, status=0)
+
+label act_7_second_battle:
+    call init_skills
+    call init_fighters
+    $ player = [you]
+    $ friends = []
+    $ allies = player + friends
+    $ enemies = [paper_giant]
+    $ you.sprite_pos = [0.2, 0.5] #0.25
+    $ paper_giant.sprite_pos = [0.8, 0.5]
+    $ you.registerSkill(AOEattack)
+    #$ paper_giant.registerSkill(PaperAxe)
+    $ allchars = allies + enemies
+    $ orderInitiators = orderBattle(allchars)
+    $ victorBattle = executeBattle(allies, enemies, orderInitiators)
+    if victorBattle<> 3:
+        stop music fadeout 1.0
+        $ config.allow_skipping = True
+        if victorBattle == 1:
+            #play sound "victory.ogg"
+            #pause 6
+            #"Gained nothing"
+            #scene bg black with dissolve
+            #pause 1
+            return
+        elif victorBattle == 2:
+            b "HOW DID YOU LOSE???"
+            play audio glitch_2
+            show white
+            pause 0.2
+            hide white
+            play audio glitch_3
+            show white
+            pause 0.2
+            $ renpy.quit(relaunch=False, status=0)

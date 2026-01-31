@@ -1,0 +1,10 @@
+label start:
+    call act_1_start
+    call act_2_start
+    call act_3_start
+    call act_4_start
+    call act_5_start
+    call act_6_start
+    call act_7_start
+    call act_8_start
+    return
